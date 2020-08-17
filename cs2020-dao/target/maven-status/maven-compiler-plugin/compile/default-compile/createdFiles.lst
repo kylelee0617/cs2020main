@@ -1,0 +1,4 @@
+com\fg\dao\HelloDao.class
+com\fg\entity\UserAccountEntity.class
+com\fg\utils\JpaUtils.class
+com\fg\entity\SampleEntity.class
