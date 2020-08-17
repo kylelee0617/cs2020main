@@ -16,7 +16,7 @@ public class Intro extends BaseController {
 	private final static String USERACCOUNT = "kyle";
 	private final static String USERPASSWORD = "lee0123";
 
-	@RequestMapping("/GO")
+	@RequestMapping("/烘培雞")
 	public String goHomePage(HttpServletRequest request, @RequestParam(value = "title", required = false, defaultValue = "GO") String title, Model model) {
 		String goPage = "testIndex";
 		
