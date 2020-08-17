@@ -13,15 +13,18 @@ import com.fg.web.utils.CookiesUtil;
 @Controller
 public class Intro extends BaseController {
 	
-//	CookiesUtil cookieUtil = new CookiesUtil();
+	private final static String USERACCOUNT = "kyle";
+	private final static String USERPASSWORD = "lee0123";
 
 	@RequestMapping("/GO")
 	public String goHomePage(HttpServletRequest request, @RequestParam(value = "title", required = false, defaultValue = "GO") String title, Model model) {
-		String goPage = "view/index";
+		String goPage = "testIndex";
 		
-//		Cookie cookie = CookiesUtil.getCookieByName(request, "userLogInfo");
-		if(CookiesUtil.getCookieByName(request, "userLogInfo") == null) {
-			goPage = "view/login";
+		Cookie cookie = CookiesUtil.getCookieByName(request, "userLogInfo");
+		if(cookie == null) {
+			goPage = "testLogin";
+		} else {
+			logger.info(">>>" + cookie.getValue());
 		}
 		
 		model.addAttribute("title", title);

@@ -3,6 +3,11 @@ server:
 spring:
   thymeleaf:
     prefix: classpath:/templates/
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
+    
 
 #spring:#  datasource:#    driver-class-name: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
 #    url: 'jdbc:sqlserver://localhost;databaseName=kandawaps'
@@ -15,3 +20,12 @@ spring:
 #       format_sql: true
 #       dialect: 'org.hibernate.dialect.SQLServer2012Dialect'
 #       ddl-auto: 'update'
+##關閉 Thymeleaf 的快取開發過程中無需重啟
+#spring.thymeleaf.cache = false
+##設定thymeleaf頁面的編碼
+#spring.thymeleaf.encoding=UTF-8
+#spring.thymeleaf.mode=HTML5
+##設定thymeleaf頁面的字尾
+#spring.thymeleaf.suffix=.html
+##設定thymeleaf頁面的儲存路徑
+#spring.thymeleaf.prefix=classpath:/templates/
