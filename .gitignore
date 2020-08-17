@@ -1,1 +1,17 @@
+# Compiled class file
 *.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Maven
+target/
+
+# Log file
+*.log
+log/
+
+# out
+**/out/
