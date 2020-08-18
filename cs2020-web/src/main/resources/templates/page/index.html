@@ -6,9 +6,9 @@ layout:decorator="layout/layout"><!-- layout檔案路徑 -->
   <body>
     <div layout:fragment="introSection">
       <h2>LogIn Success</h2>
-      <label style = "font-size: 50px; margin-right: 20px;">Session Id : </label><span th:text="${sessionId}"></span>
+      
       <br>
-      <label>logIn User : </label><span style="color: red; font-size:70px;" th:text="${user}"></span>
+      <label>logIn User : </label><span style="color: red; font-size:70px;" th:text="${userInfo.useracc}"></span>
     </div>
   </body>
 </html>

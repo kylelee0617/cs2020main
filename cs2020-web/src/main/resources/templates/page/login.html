@@ -1,0 +1,16 @@
+<!-- index.html -->
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/layout"><!-- layout檔案路徑 -->
+  <head>...</head>
+  <body>
+    <div layout:fragment="introSection">
+    	<h2>Please Login</h2>
+    	<form action="#" th:action="@{/doLogin}" method="post" >
+        	<label>User Account : </label> <input type="text" name="useracc" />
+        	<label>User Password : </label> <input type="text" name="userpsw" />
+        	<button type="submit">登入</button>
+		</form>
+    </div>
+  </body>
+</html>

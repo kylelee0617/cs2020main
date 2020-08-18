@@ -9,6 +9,8 @@ spring:
     suffix: .html
   resources: 
     static-locations: classpath:/static/
+    cache: 
+      period: 0
     
 
 #spring:#  datasource:#    driver-class-name: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
@@ -31,3 +33,20 @@ spring:
 #spring.thymeleaf.suffix=.html
 ##設定thymeleaf頁面的儲存路徑
 #spring.thymeleaf.prefix=classpath:/templates/
+
+#server.port=8080 
+#server.session.timeout=10 
+#server.tomcat.uri-encoding=UTF-8 
+#spring.thymeleaf.prefix=classpath:/views/ 
+#spring.thymeleaf.suffix=.html 
+#spring.thymeleaf.mode=HTML5 
+#spring.thymeleaf.encoding=UTF-8 
+#spring.thymeleaf.content-type=text/html 
+#spring.thymeleaf.cache=false 
+
+
+
+
+
+
+
