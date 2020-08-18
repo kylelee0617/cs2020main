@@ -1,0 +1,14 @@
+<!-- components/header.html -->
+<div th:fragment="header">
+  <!-- 導航 -->
+  <div id="navBarMain" th:include="components/navBar :: navBar"></div>
+
+  <!-- 麵包屑 -->
+  <nav id="breadcrumb" aria-label="breadcrumb" class="">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item">基本資料建立</li>
+          <li class="breadcrumb-item">基本資料報表</li>
+          <li class="breadcrumb-item active" aria-current="page">車位資料表</li>
+      </ol>
+  </nav>
+</div>

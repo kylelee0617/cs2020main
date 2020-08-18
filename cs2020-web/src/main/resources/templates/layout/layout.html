@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
+<!-- layout/layout.html -->
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -33,34 +32,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.17.1/locale/bootstrap-table-zh-TW.min.js"></script>
-
-
-</head>
-
-<body>
-    <!-- 導航 -->
-    <div id="navBarMain"></div>
-
-    <!-- 麵包屑 -->
-    <nav id="breadcrumb" aria-label="breadcrumb" class="">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">基本資料建立</li>
-            <li class="breadcrumb-item">基本資料報表</li>
-            <li class="breadcrumb-item active" aria-current="page">車位資料表</li>
-        </ol>
-    </nav>
-
+  </head>
+  <body>
+    <!-- <section id="introSection" class="py-3"></section> -->
+    <div id="header1" th:include="components/header :: header"></div>
+    
     <!-- 主內容 -->
-    <section id="introSection" class="py-3"></section>
-
+    <div layout:fragment="introSection"></div>
+    
     <br><br>
-
-    <!-- 頁尾 -->
-    <footer id="footer" class="bg-secondary text-white  fixed-bottom">
-        <div class="footer-end bg-dark mt-3 py-2">
-            <p class="text-center">&copy; Copy right 2020</p>
-        </div>
-    </footer>
-</body>
-
+    
+    <div id="footer1" th:include="components/footer :: footer"></div>
+  </body>
 </html>
+

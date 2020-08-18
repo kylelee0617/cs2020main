@@ -18,19 +18,31 @@ public class Intro extends BaseController {
 
 	@RequestMapping("/烘培雞")
 	public String goHomePage(HttpServletRequest request, @RequestParam(value = "title", required = false, defaultValue = "GO") String title, Model model) {
-		String goPage = "testIndex";
+		String goPage = "page/index";
 		
-		Cookie cookie = CookiesUtil.getCookieByName(request, "userLogInfo");
-		if(cookie == null) {
+		Cookie ckLogInfo = CookiesUtil.getCookieByName(request, "userLogInfo");
+		if(ckLogInfo == null) {
 			goPage = "testLogin";
-		} else {
-			logger.info(">>>" + cookie.getValue());
-		}
+			return goPage;
+		} 
 		
-		model.addAttribute("title", title);
+		Cookie ckJSESSIONID = CookiesUtil.getCookieByName(request, "JSESSIONID");
+		logger.info(">>Jid:" + ckJSESSIONID.getValue());
+		
+		//TODO: 解密cookie , 驗證sql中使用者帳密
+		
+		model.addAttribute("user", USERACCOUNT);
 		model.addAttribute("sessionId", request.getSession().getId());
 		
 		return goPage;
+	}
+	
+	@RequestMapping("/doLogin")
+	public String login(HttpServletRequest request, @RequestParam(value = "title", required = false, defaultValue = "GO") String title, Model model) {
+		
+		
+		
+		return "";
 	}
 	
 	

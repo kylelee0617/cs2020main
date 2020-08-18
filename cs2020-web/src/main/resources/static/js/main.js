@@ -36,10 +36,10 @@ $(function() {
 
 // 初始化
 function init() {
-    $("#navBarMain").load("./navMenu.html");
+//    $("#navBarMain").load("./navMenu.html");
 
     // goPage('./payNotice/payNotice.html');
-    goPage('./custData/custData.html');
+//    goPage('./custData/custData.html');
     // goPage('./getMoney/getMoney.html');
 }
 

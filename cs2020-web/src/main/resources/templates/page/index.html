@@ -1,0 +1,14 @@
+<!-- index.html -->
+<html 
+xmlns:th="http://www.thymeleaf.org"
+layout:decorator="layout/layout"><!-- layout檔案路徑 -->
+  <head>...</head>
+  <body>
+    <div layout:fragment="introSection">
+      <h2>LogIn Success</h2>
+      <label style = "font-size: 50px; margin-right: 20px;">Session Id : </label><span th:text="${sessionId}"></span>
+      <br>
+      <label>logIn User : </label><span style="color: red; font-size:70px;" th:text="${user}"></span>
+    </div>
+  </body>
+</html>
