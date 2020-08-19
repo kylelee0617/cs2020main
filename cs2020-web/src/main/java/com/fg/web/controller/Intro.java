@@ -1,73 +1,160 @@
 package com.fg.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fg.entity.UsersEntity;
+import com.fg.service.UsersService;
+import com.fg.web.utils.AES;
 import com.fg.web.utils.CookiesUtil;
-import com.fg.web.vo.UserInfo;
 
 @Controller
 public class Intro extends BaseController {
 	
-	private final static String USERACCOUNT = "kyle";
-	private final static String USERPASSWORD = "lee0123";
+	@Autowired
+	UsersService userServ;
+	
+	UsersEntity user;
 
-	@RequestMapping("/烘培雞")
-	public String goHomePage(HttpServletRequest request, @RequestParam(value = "title", required = false, defaultValue = "GO") String title, Model model) {
-		goPage = "page/index";
-		
-		Cookie ckLogInfo = CookiesUtil.getCookieByName(request, "userLogInfo");
-		if(ckLogInfo == null) {
+	@RequestMapping("/home")
+	public String goHomePage(HttpServletRequest req, Model model) {
+		user = new UsersEntity();
+		model.addAttribute("user", user);
+
+		//取得token
+		Cookie ckLogInfo = CookiesUtil.getCookieByName(req, "FGlogInfo");
+		if (ckLogInfo == null) {
 			logger.info(">>> no user info");
-			return "page/login";
+			return "redirect:/login";
+		}
+
+		// 解密token
+		String[] dyToken = AES.AESDncode(RULEKEY, ckLogInfo.getValue()).split("&&");
+		String time = dyToken[0];
+		String useracc = dyToken[1];
+		String userpsw = dyToken[2];
+		
+		//驗證時間有效
+		boolean validToken = this.validTime(Long.parseLong(time));
+		if(!validToken) {
+			return "redirect:/login";
 		}
 		
-		Cookie ckJSESSIONID = CookiesUtil.getCookieByName(request, "JSESSIONID");
-		logger.info(">>Jid:" + ckJSESSIONID.getValue());
+		//帳密檢核
+		if(!this.validUser(useracc, userpsw)) {
+			return "redirect:/login";
+		}
 		
-		//TODO: 解密cookie , 驗證sql中使用者帳密
-		
-		model.addAttribute("user", USERACCOUNT);
-		model.addAttribute("sessionId", request.getSession().getId());
-		
-		return goPage;
+		model.addAttribute("user", user);
+
+		return "page/index";
 	}
 	
+	@RequestMapping("/login")
+	public String login(Model model) {
+		model.addAttribute("user", new UsersEntity());
+		return "page/login";
+	}
+
 	@RequestMapping("/doLogin")
-	public String doLogin(HttpServletResponse res , Model model, 
-			@RequestParam(value = "useracc", required = true) String useracc, 
-			@RequestParam(value = "userpsw", required = true) String userpsw) {
-		
+	public String doLogin(HttpServletResponse res, Model model, @ModelAttribute(value = "user") UsersEntity user) {
+		String useracc = user.getUseracc();
+		String userpsw = user.getUserpsw();
 		logger.info(">>>useracc : " + useracc);
 		logger.info(">>>userpsw : " + userpsw);
-		
-		//輸入錯誤，踢回LOGIN
-		if(StringUtils.pathEquals(useracc, "") || StringUtils.pathEquals(userpsw, "")) {
-			return "page/login";
+
+		//帳密檢核
+		if(!this.validUser(useracc, userpsw)) {
+			return "redirect:/login";
 		}
 		
-		//TOFO: 資料庫檢核
-		if( !StringUtils.pathEquals(useracc, USERACCOUNT) || !StringUtils.pathEquals(userpsw, USERPASSWORD)) {
-			return "page/login";
-		}
-		
-		//無誤，處理後允許登入
-		CookiesUtil.setCookie(res, "userLogInfo", useracc + userpsw, 300);
-		UserInfo userInfo = new UserInfo();
-		userInfo.setUseracc(useracc);
-		userInfo.setUserpsw(userpsw);
-		model.addAttribute("userInfo", userInfo);
-		goPage = "page/index";
-		
-		return goPage;
+		// 無誤，處理後允許登入
+		//組成加密token
+		StringBuilder aesLoginMsg = new StringBuilder();
+		aesLoginMsg.append(System.currentTimeMillis());
+		aesLoginMsg.append("&&");
+		aesLoginMsg.append(useracc);
+		aesLoginMsg.append("&&");
+		aesLoginMsg.append(userpsw);
+		CookiesUtil.setCookie(res, "FGlogInfo", AES.AESEncode(RULEKEY, aesLoginMsg.toString()), 9999);
+
+		return "redirect:/home";
 	}
 	
+	private boolean validUser(String useracc , String userpsw) {
+		// 輸入空白
+		if (StringUtils.pathEquals(useracc, "") || StringUtils.pathEquals(userpsw, "")) {
+			return false;
+		}
+		
+		// TOFO: 資料庫檢核
+		List<UsersEntity> usersList = userServ.getUserByUseracc(useracc);
+		if(usersList.size() != 1) {
+			return false;	//不為一筆 = 有問題
+		}
+		
+		if(!StringUtils.pathEquals(userpsw, usersList.get(0).getUserpsw())) {
+			return false;	//密碼錯誤
+		}
+		
+		this.user = usersList.get(0);
+		return true;
+	}
 	
+	/**
+	 * 驗證token是否過期
+	 * @param time
+	 * @return
+	 */
+	public boolean validTime(Long tokenTime) {
+		long crrTime = System.currentTimeMillis();
+		long validTime = TOKENDAY * 24 * 60 * 60 * 1000;	//token有效期限
+		
+		if(crrTime > tokenTime + validTime) {
+			return false;
+		}
+			
+		return true;
+	}
+	
+//	@RequestMapping("/doLogin")
+//	public String doLogin(HttpServletResponse res, Model model,
+//			@RequestParam(value = "useracc", required = true) String useracc,
+//			@RequestParam(value = "userpsw", required = true) String userpsw) {
+//
+//		logger.info(">>>useracc : " + useracc);
+//		logger.info(">>>userpsw : " + userpsw);
+//
+//		// 輸入錯誤，踢回LOGIN
+//		if (StringUtils.pathEquals(useracc, "") || StringUtils.pathEquals(userpsw, "")) {
+//			return "page/login";
+//		}
+//
+//		// TOFO: 資料庫檢核
+//		if (!StringUtils.pathEquals(useracc, USERACCOUNT) || !StringUtils.pathEquals(userpsw, USERPASSWORD)) {
+//			return "page/login";
+//		}
+//
+//		// 無誤，處理後允許登入
+//		CookiesUtil.setCookie(res, "userLogInfo", useracc + userpsw, 0);
+//		UserInfo userInfo = new UserInfo();
+//		userInfo.setUseracc(useracc);
+//		userInfo.setUserpsw(userpsw);
+//		model.addAttribute("userInfo", userInfo);
+//		goPage = "page/index";
+//
+//		return goPage;
+//	}
+
 }

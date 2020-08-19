@@ -6,8 +6,9 @@
   <body>
     <div layout:fragment="introSection">
     	<h2>Please Login</h2>
-    	<form action="#" th:action="@{/doLogin}" method="post" >
-        	<label>User Account : </label> <input type="text" name="useracc" />
+    	<form action="#" th:action="@{/doLogin}" th:object="${user}" method="post" >
+        	<label>User Account : </label> <input type="text" th:field="*{useracc}" />
+        	<br>
         	<label>User Password : </label> <input type="text" name="userpsw" />
         	<button type="submit">登入</button>
 		</form>
