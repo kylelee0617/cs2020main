@@ -10,6 +10,7 @@
 fieldset {
     border: 1px solid blueviolet;
     border-radius: 15px;
+    min-height: 300px;
 }
 
 fieldset legend {
@@ -20,4 +21,8 @@ fieldset legend {
 .formHR1 {
     border-top: 1px solid burlywood;
     /* margin-bottom: 5px; */
+}
+
+.bootstrap-table {
+	height:200px;
 }

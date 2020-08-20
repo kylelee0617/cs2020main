@@ -1,7 +1,8 @@
-<script src="../js/custData/profileCustContent_cols.js"></script>
-<script src="../js/tableWork.js"></script>
-<script src="../js/custData/profileCustContent.js"></script>
-<!-- js End -->
+<div th:fragment="profileCustContent">
+
+<script th:src="@{/js/custData/profileCustContent_cols.js}"></script>
+<script th:src="@{/js/tableWork.js}"></script>
+<script th:src="@{/js/custData/profileCustContent.js}"></script>
 
 <fieldset class="px-3 pb-4">
     <legend style="width: 50px;">客戶</legend>
@@ -162,3 +163,5 @@
 </div>
 
 <br>
+
+</div>

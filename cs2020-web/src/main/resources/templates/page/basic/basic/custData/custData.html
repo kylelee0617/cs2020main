@@ -1,8 +1,10 @@
 <!-- index.html -->
-<html 
-	xmlns:th="http://www.thymeleaf.org"
-	layout:decorator="layout/layout"><!-- layout檔案路徑 -->
+<!-- import layout檔案路徑 -->
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/layout">
+	
   <head>...</head>
+  
   <body>
     <div layout:fragment="introSection">
     	<!-- 客戶資料建檔 -->
@@ -52,7 +54,7 @@
 		        <a class="nav-link tabMenu" id="pills-carCashContent-tab" data-toggle="pill" href="#pills-carCashContent" role="tab" aria-controls="pills-carCashContent" aria-selected="false">車位款</a></li>
 		</ul>
 		<div class="tab-content" id="pills-tabContent">
-		    <div class="tab-pane tabContent fade show active" id="pills-profileCustContent" role="tabpanel" aria-labelledby="pills-profileCustContent-tab">載入中......0</div>
+		    <div class="tab-pane tabContent fade show active" th:include="page/basic/basic/custData/profileCustContent.html :: profileCustContent" id="pills-profileCustContent" role="tabpanel" aria-labelledby="pills-profileCustContent-tab">載入中......0</div>
 		    <div class="tab-pane tabContent fade " id="pills-profileHouseCarContent" role="tabpanel" aria-labelledby="pills-profileHouseCarContent-tab">載入中......1</div>
 		    <div class="tab-pane tabContent fade " id="pills-messagesContent" role="tabpanel" aria-labelledby="pills-messagesContent-tab">載入中......2</div>
 		    <div class="tab-pane tabContent fade " id="pills-houseCashContent" role="tabpanel" aria-labelledby="pills-houseCashContent-tab">載入中......3</div>
