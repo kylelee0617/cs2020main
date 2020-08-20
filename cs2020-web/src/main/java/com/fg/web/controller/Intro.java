@@ -78,8 +78,6 @@ public class Intro extends BaseController {
 		logger.info(">>>useracc : " + useracc);
 		logger.info(">>>userpsw : " + userpsw);
 		
-		
-
 		//帳密檢核
 		EnumRESCode validAccPsw = this.validUser(useracc, userpsw);
 		if(validAccPsw.getCode() != EnumRESCode.SUCCESS.getCode()) {
@@ -96,7 +94,6 @@ public class Intro extends BaseController {
 		aesLoginMsg.append("&&");
 		aesLoginMsg.append(userpsw);
 		CookiesUtil.setCookie(res, "FGlogInfo", AES.AESEncode(RULEKEY, aesLoginMsg.toString()), 300);
-
 		return "redirect:/home";
 	}
 	
@@ -128,7 +125,7 @@ public class Intro extends BaseController {
 	public EnumRESCode validTime(Long tokenTime) {
 		long crrTime = System.currentTimeMillis();
 		
-		//取得原戳記N天後的時間戳記
+		//取得原戳記TOKENDAY天後的時間戳記
 		Calendar calendar1 = Calendar.getInstance();
 		calendar1.setTimeInMillis(tokenTime);
 		calendar1.add(Calendar.DATE, TOKENDAY);

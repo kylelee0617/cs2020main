@@ -4,11 +4,10 @@ let funcName;
 $(function() {
     init();
 
-    $(document).on("click", ".dropdown-item", function(event) {
-        let url = $(this).attr("href");
-        // console.log(url)
-        if (url !== "#") goPage(url);
-    });
+//    $(document).on("click", ".dropdown-item", function(event) {
+//        let url = $(this).attr("href");
+//        if (url !== "#") goPage(url);
+//    });
 
     $(document).on('click', '.table tr', function(event) {
         $(".table tr").removeClass("table-active");
@@ -17,20 +16,20 @@ $(function() {
     });
 
     //Tab功能
-    $(document).on("click", ".tabMenu", function(event) {
-        let $this = $(this);
-        const tabGo = $this.attr("go");
-        const tabId = $this.attr("id");
-        const tabAriacontrols = $this.attr("aria-controls");
-        // console.log(tabGo, tabId, tabAriacontrols)
-
-        let content = $(".tabContent");
-        content.attr("id", tabAriacontrols);
-        content.attr("aria-labelledby", tabId);
-        content.load(tabGo);
-
-        localStorage.setItem(funcName + "_Tab", tabGo);
-    })
+//    $(document).on("click", ".tabMenu", function(event) {
+//        let $this = $(this);
+//        const tabGo = $this.attr("go");
+//        const tabId = $this.attr("id");
+//        const tabAriacontrols = $this.attr("aria-controls");
+//        // console.log(tabGo, tabId, tabAriacontrols)
+//
+//        let content = $(".tabContent");
+//        content.attr("id", tabAriacontrols);
+//        content.attr("aria-labelledby", tabId);
+//        content.load(tabGo);
+//
+//        localStorage.setItem(funcName + "_Tab", tabGo);
+//    })
 
 });
 
@@ -38,9 +37,9 @@ $(function() {
 function init() {
 //    $("#navBarMain").load("./navMenu.html");
 
-    // goPage('./payNotice/payNotice.html');
-//    goPage('./custData/custData.html');
-    // goPage('./getMoney/getMoney.html');
+//  goPage('./payNotice/payNotice.html');
+//	goPage('./custData/custData.html');
+//  goPage('./getMoney/getMoney.html');
 }
 
 //功能初始化
