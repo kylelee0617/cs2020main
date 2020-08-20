@@ -7,7 +7,7 @@ public class BaseController {
 	
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 	protected String GOTO_PAGE = "";
-	protected final int TOKENDAY = 1;	//token有效期限(天)
+	protected final int TOKENDAY = 30;	//token有效期限(天)
 	protected final String RULEKEY = "0d90b7694f0ed995349bce51bdf54cd4";	//AES KEY
 
 }

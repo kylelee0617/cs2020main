@@ -1,5 +1,6 @@
 package com.fg.web.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -12,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fg.entity.UsersEntity;
 import com.fg.service.UsersService;
+import com.fg.web.Enum.EnumRESCode;
 import com.fg.web.utils.AES;
 import com.fg.web.utils.CookiesUtil;
 
@@ -46,13 +47,16 @@ public class Intro extends BaseController {
 		String userpsw = dyToken[2];
 		
 		//驗證時間有效
-		boolean validToken = this.validTime(Long.parseLong(time));
-		if(!validToken) {
+		EnumRESCode validToken = this.validTime(Long.parseLong(time));
+		if(validToken.getCode() != EnumRESCode.SUCCESS.getCode()) {
+			model.addAttribute("result", validToken);
 			return "redirect:/login";
 		}
 		
 		//帳密檢核
-		if(!this.validUser(useracc, userpsw)) {
+		EnumRESCode validAccPsw = this.validUser(useracc, userpsw);
+		if(validAccPsw.getCode() != EnumRESCode.SUCCESS.getCode()) {
+			model.addAttribute("result", validAccPsw);
 			return "redirect:/login";
 		}
 		
@@ -73,9 +77,13 @@ public class Intro extends BaseController {
 		String userpsw = user.getUserpsw();
 		logger.info(">>>useracc : " + useracc);
 		logger.info(">>>userpsw : " + userpsw);
+		
+		
 
 		//帳密檢核
-		if(!this.validUser(useracc, userpsw)) {
+		EnumRESCode validAccPsw = this.validUser(useracc, userpsw);
+		if(validAccPsw.getCode() != EnumRESCode.SUCCESS.getCode()) {
+			model.addAttribute("result", validAccPsw);
 			return "redirect:/login";
 		}
 		
@@ -87,29 +95,29 @@ public class Intro extends BaseController {
 		aesLoginMsg.append(useracc);
 		aesLoginMsg.append("&&");
 		aesLoginMsg.append(userpsw);
-		CookiesUtil.setCookie(res, "FGlogInfo", AES.AESEncode(RULEKEY, aesLoginMsg.toString()), 9999);
+		CookiesUtil.setCookie(res, "FGlogInfo", AES.AESEncode(RULEKEY, aesLoginMsg.toString()), 300);
 
 		return "redirect:/home";
 	}
 	
-	private boolean validUser(String useracc , String userpsw) {
+	private EnumRESCode validUser(String useracc , String userpsw) {
 		// 輸入空白
 		if (StringUtils.pathEquals(useracc, "") || StringUtils.pathEquals(userpsw, "")) {
-			return false;
+			return EnumRESCode.LOGINFAIL;
 		}
 		
-		// TOFO: 資料庫檢核
+		// 資料庫檢核
 		List<UsersEntity> usersList = userServ.getUserByUseracc(useracc);
 		if(usersList.size() != 1) {
-			return false;	//不為一筆 = 有問題
+			return EnumRESCode.LOGINFAIL;	//不為一筆 = 有問題
 		}
 		
 		if(!StringUtils.pathEquals(userpsw, usersList.get(0).getUserpsw())) {
-			return false;	//密碼錯誤
+			return EnumRESCode.ACCPSWFAIL;	//密碼錯誤
 		}
 		
 		this.user = usersList.get(0);
-		return true;
+		return EnumRESCode.SUCCESS;
 	}
 	
 	/**
@@ -117,44 +125,21 @@ public class Intro extends BaseController {
 	 * @param time
 	 * @return
 	 */
-	public boolean validTime(Long tokenTime) {
+	public EnumRESCode validTime(Long tokenTime) {
 		long crrTime = System.currentTimeMillis();
-		long validTime = TOKENDAY * 24 * 60 * 60 * 1000;	//token有效期限
 		
-		if(crrTime > tokenTime + validTime) {
-			return false;
+		//取得原戳記N天後的時間戳記
+		Calendar calendar1 = Calendar.getInstance();
+		calendar1.setTimeInMillis(tokenTime);
+		calendar1.add(Calendar.DATE, TOKENDAY);
+		long validTime = calendar1.getTimeInMillis();
+		
+		//現在戳記 > 原+30天 = 超過
+		if(crrTime > validTime) {
+			return EnumRESCode.TOKENOUTOFTIME;
 		}
 			
-		return true;
+		return EnumRESCode.SUCCESS;
 	}
 	
-//	@RequestMapping("/doLogin")
-//	public String doLogin(HttpServletResponse res, Model model,
-//			@RequestParam(value = "useracc", required = true) String useracc,
-//			@RequestParam(value = "userpsw", required = true) String userpsw) {
-//
-//		logger.info(">>>useracc : " + useracc);
-//		logger.info(">>>userpsw : " + userpsw);
-//
-//		// 輸入錯誤，踢回LOGIN
-//		if (StringUtils.pathEquals(useracc, "") || StringUtils.pathEquals(userpsw, "")) {
-//			return "page/login";
-//		}
-//
-//		// TOFO: 資料庫檢核
-//		if (!StringUtils.pathEquals(useracc, USERACCOUNT) || !StringUtils.pathEquals(userpsw, USERPASSWORD)) {
-//			return "page/login";
-//		}
-//
-//		// 無誤，處理後允許登入
-//		CookiesUtil.setCookie(res, "userLogInfo", useracc + userpsw, 0);
-//		UserInfo userInfo = new UserInfo();
-//		userInfo.setUseracc(useracc);
-//		userInfo.setUserpsw(userpsw);
-//		model.addAttribute("userInfo", userInfo);
-//		goPage = "page/index";
-//
-//		return goPage;
-//	}
-
 }

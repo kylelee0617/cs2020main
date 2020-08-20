@@ -29,7 +29,7 @@ public class AppService {
 	private String ip = "192.168.3.51";
 
 //	@SuppressWarnings("unused")
-	@GetMapping(value="loginJ")
+	@GetMapping(value="loginAppService")
 	public Result login(@RequestParam("index") Integer id, @RequestParam("indexp") Integer psw) {
 		LOGS.info(">>>login");
 		
@@ -127,8 +127,8 @@ public class AppService {
 			//驗證時間有效
 			boolean validToken = this.validTime(Long.parseLong(time));
 			if(!validToken) {
-				rs.setCode(EnumRESCode.TOKENFAIL.getCode());
-				rs.setMsg(EnumRESCode.TOKENFAIL.getDesc());
+				rs.setCode(EnumRESCode.TOKENOUTOFTIME.getCode());
+				rs.setMsg(EnumRESCode.TOKENOUTOFTIME.getDesc());
 				return rs;
 			}
 			

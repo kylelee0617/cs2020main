@@ -5,10 +5,12 @@ public enum EnumRESCode
 {
 	SUCCESS
 	(1 , "success" , "成功完成" , "desc"),
-	TOKENFAIL
-	(2 , "tokenFail" , "憑證過期" , "desc - 憑證過期"),
+	TOKENOUTOFTIME
+	(2 , "tokenOutOfTime" , "憑證過期" , "desc - 憑證過期"),
 	LOGINFAIL
-	(2 , "loginFail" , "登入失敗" , "desc - 登入失敗"),
+	(3 , "loginFail" , "登入失敗" , "desc - 登入失敗"),
+	ACCPSWFAIL
+	(4 , "accOrPswFail" , "帳號密碼錯誤" , "desc - 帳號密碼錯誤"),
 	ERROR
 	(999 , "ERROR" , "發生不明錯誤" , "desc - 發生不明錯誤");
 	
