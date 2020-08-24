@@ -1,252 +1,242 @@
 <div th:fragment="profileCustContent">
 
-<script th:src="@{/js/custData/profileCustContent_cols.js}"></script>
-<script th:src="@{/js/tableWork.js}"></script>
-<script th:src="@{/js/custData/profileCustContent.js}"></script>
+	<script th:src="@{/js/custData/profileCustContent_cols.js}"></script>
+	<script th:src="@{/js/tableWork.js}"></script>
+	<script th:src="@{/js/custData/profileCustContent.js}"></script>
+	<!-- <script th:src="@{/js/custData/profileCustContent-datatable-cust.js}"></script> -->
+	<!-- <script th:src="@{/js/custData/profileCustContent-datatable-ben.js}"></script> -->
 
-<fieldset class="px-3 pb-4">
-    <legend style="width: 50px;">客戶</legend>
-    <div id="toolbarCust">
-        <button id="buttonAddCust" class="btn btn-outline-success">新增</button> &nbsp;
-        <button id="getTableDataCust" class="btn btn-outline-danger">刪除</button>
-    </div>
-    <table id="tableCust"></table>
-</fieldset>
+	<fieldset class="px-3 pb-4">
+		<legend style="width: 50px;">客戶</legend>
+		<div>
+			<button id="btnAddCust" class="btn btn-outline-success">新增</button>
+			&nbsp;
+			<button id="btnDelCust" class="btn btn-outline-danger">刪除</button>
+			<br><br>
+			<!-- <table id="tableCust" class="table table-striped table-bordered" style="width:100%"></table> -->
+			<table id="tableCust"></table>
+		</div>
+	</fieldset>
 
-<button id="tableBtn">submit</button>
-<table id="datatable1" class="table table-striped table-bordered">
-		<thead>
-   	        <tr>
-               <th>Name</th>
-               <th>Age</th>
-               <th>Position</th>
-               <th>Office</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td><input type="text" id="row-1-age" name="row-1-age" value="61"></td>
-                <td><input type="text" id="row-1-position" name="row-1-position" value="System Architect"></td>
-                <td><select size="1" id="row-1-office" name="row-1-office">
-                    <option value="Edinburgh" selected="selected">
-                        Edinburgh
-                    </option>
-                    <option value="London">
-                        London
-                    </option>
-                    <option value="New York">
-                        New York
-                    </option>
-                    <option value="San Francisco">
-                        San Francisco
-                    </option>
-                    <option value="Tokyo">
-                        Tokyo
-                    </option>
-                </select></td>
-            </tr>
-            <tr>
-                <td>Tiger mon</td>
-                <td><input type="text" id="row-1-age" name="row-1-age" value="61"></td>
-                <td><input type="text" id="row-1-position" name="row-1-position" value="System Architect"></td>
-                <td><select size="1" id="row-1-office" name="row-1-office">
-                    <option value="Edinburgh" selected="selected">
-                        Edinburgh
-                    </option>
-                    <option value="London">
-                        London
-                    </option>
-                    <option value="New York">
-                        New York
-                    </option>
-                    <option value="San Francisco">
-                        San Francisco
-                    </option>
-                    <option value="Tokyo">
-                        Tokyo
-                    </option>
-                </select></td>
-            </tr>
-            </tbody>
-            <tfoot>
-	            <tr>
-	                <th>Name</th>
-	                <th>Age</th>
-	                <th>Position</th>
-	                <th>Office</th>
-	            </tr>
-	        </tfoot>
-</table>
-<script>
-$(function(){
-	  var table = $('#datatable1').DataTable({
-	        columnDefs: [{
-	            orderable: false,
-	            targets: [1,2,3]
-	        }]
-	    });
-	 
-	    $('#tableBtn').click( function() {
-	        var data = table.$('input, select').serialize();
-	        alert(
-	            "The following data would have been submitted to the server: \n\n"+
-	            data
-	        );
-	        return false;
-	    } );
-})
-</script>
+	<br>
 
-<br>
+	<fieldset class="px-3 pb-4">
+		<legend style="width: 300px;">實質受益人 或 指定第三人</legend>
+		<div>
+			<button id="btnAddBen" class="btn btn-outline-success">新增</button>
+			&nbsp;
+			<button id="btnDelBen" class="btn btn-outline-danger">刪除</button>
+			<br>
+			<table id="tableBen"></table>
+		</div>
+	</fieldset>
 
-<fieldset class="px-3 pb-4">
-    <legend style="width: 300px;">實質受益人 或 指定第三人</legend>
-    <div id="toolbarBen">
-        <button id="buttonAddBen" class="btn btn-outline-success">新增</button> &nbsp;
-        <button id="getTableDataBen" class="btn btn-outline-danger">刪除</button>
-    </div>
-    <table id="tableBen"></table>
-</fieldset>
+	<!-- 分隔線 -->
+	<div class='col-lg-offset-6 mt-4'>
+		<hr>
+	</div>
 
-<!-- 分隔線 -->
-<div class='col-lg-offset-6 mt-4'>
-    <hr>
-</div>
+	<div class="row mb-2">
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">銷售人</span>
+				</div>
+				<input type="text" class="form-control"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">經辦人代號</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">銷獎</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">申請日</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">訂購日</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+	</div>
 
-<div class="row mb-2">
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">銷售人</span></div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">經辦人代號</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">銷獎</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">申請日</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">訂購日</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-</div>
+	<!-- 分隔線 -->
+	<div class='col-lg-offset-6 mt-4'>
+		<hr>
+	</div>
 
-<!-- 分隔線 -->
-<div class='col-lg-offset-6 mt-4'>
-    <hr>
-</div>
+	<div class="row mb-2">
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">自備款</span>
+				</div>
+				<input type="text" class="form-control"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">優付</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+	</div>
 
-<div class="row mb-2">
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">自備款</span></div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">優付</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-</div>
+	<div class="row mb-2">
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">預計銀貸</span>
+				</div>
+				<input type="text" class="form-control"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">存匯代號</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">年限</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">虛擬帳號</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">預計銀貸日</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+	</div>
 
-<div class="row mb-2">
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">預計銀貸</span></div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">存匯代號</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">年限</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">虛擬帳號</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">預計銀貸日</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-</div>
+	<div class="row mb-2">
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">信託虛擬帳號</span>
+				</div>
+				<input type="text" class="form-control"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">版本</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+	</div>
 
-<div class="row mb-2">
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">信託虛擬帳號</span></div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">版本</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-</div>
+	<!-- 分隔線 -->
+	<div class='col-lg-offset-6 mt-4'>
+		<hr>
+	</div>
 
-<!-- 分隔線 -->
-<div class='col-lg-offset-6 mt-4'>
-    <hr>
-</div>
+	<div class="row mb-2">
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">定審日期</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">定審結果</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="input-group input-group-sm">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">與合約內容一致</span>
+				</div>
+				<input type="text" class="form-control mr-2"
+					aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+	</div>
 
-<div class="row mb-2">
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">定審日期</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">定審結果</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="input-group input-group-sm">
-            <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">與合約內容一致</span></div>
-            <input type="text" class="form-control mr-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </div>
-</div>
+	<div class="row justify-content-md-center mt-5">
+		<div class="col-md-2">
+			<button id="saveData" class="btn btn-primary btn-lg btn-block">儲存</button>
+		</div>
+	</div>
 
-<div class="row justify-content-md-center mt-5">
-    <div class="col-md-2">
-        <button id="saveData" class="btn btn-primary btn-lg btn-block">儲存</button>
-    </div>
-</div>
-
-<br>
+	<br>
 
 </div>

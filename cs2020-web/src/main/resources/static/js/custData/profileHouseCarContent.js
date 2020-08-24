@@ -39,12 +39,12 @@ mainTableCols = [{
 }, ];
 
 $(function() {
-    let $table1 = $("#table1");
-    bsTableInit($table1, mainTableCols);
+    let $tableHC = $("#tableHC");
+    bsTableInit($tableHC, mainTableCols);
 
-    let $btnAdd1 = $("#buttonAdd1");
-    $btnAdd1.click(function() {
-        $table1.bootstrapTable('insertRow', {
+    let $btnAddHC = $("#btnAddHC");
+    $btnAddHC.click(function() {
+        $tableHC.bootstrapTable('insertRow', {
             index: 0,
             row: {
                 hcType: '',
@@ -63,9 +63,9 @@ $(function() {
         });
     });
 
-    let $getTableData = $("#getTableData");
-    $getTableData.click(function() {
-        alert(JSON.stringify($table1.bootstrapTable('getData')));
+    let $getTableDataHC = $("#getTableDataHC");
+    $getTableDataHC.click(function() {
+        alert(JSON.stringify($tableHC.bootstrapTable('getData')));
     });
 
 });

@@ -24,12 +24,12 @@ mainTableCols = [{
 }, ];
 
 $(function() {
-    let $table1 = $("#table1");
-    bsTableInit($table1, mainTableCols);
+    let $tableHCash = $("#tableHCash");
+    bsTableInit($tableHCash, mainTableCols);
 
-    let $btnAdd1 = $("#buttonAdd1");
-    $btnAdd1.click(function() {
-        $table1.bootstrapTable('insertRow', {
+    let $btnAddHCash = $("#btnAddHCash");
+    $btnAddHCash.click(function() {
+    	$tableHCash.bootstrapTable('insertRow', {
             index: 0,
             row: {
                 chisu: '',
@@ -43,9 +43,9 @@ $(function() {
         });
     });
 
-    let $getTableData = $("#getTableData");
-    $getTableData.click(function() {
-        alert(JSON.stringify($table1.bootstrapTable('getData')));
+    let $getTableDataHCash = $("#getTableDataHCash");
+    $getTableDataHCash.click(function() {
+        alert(JSON.stringify($tableHCash.bootstrapTable('getData')));
     });
 
 });

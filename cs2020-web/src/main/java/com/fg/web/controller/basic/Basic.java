@@ -9,13 +9,16 @@ import com.fg.web.controller.BaseController;
 @Controller
 @RequestMapping("/basic")
 public class Basic extends BaseController {
-	
 
 	@RequestMapping("/basic/custData")
-	public String goHomePage(Model model) {
+	public String custData(Model model) {
 		
-
 		return "page/basic/basic/custData/custData";
+	}
+	
+	@RequestMapping("/test")
+	public String test(Model model) {
+		return "page/test";
 	}
 	
 }

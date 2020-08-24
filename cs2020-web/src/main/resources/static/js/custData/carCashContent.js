@@ -24,12 +24,12 @@ mainTableCols = [{
 }, ];
 
 $(function() {
-    let $table1 = $("#table1");
-    bsTableInit($table1, mainTableCols);
+    let $tableCC = $("#tableCC");
+    bsTableInit($tableCC, mainTableCols);
 
-    let $btnAdd1 = $("#buttonAdd1");
-    $btnAdd1.click(function() {
-        $table1.bootstrapTable('insertRow', {
+    let $btnAddCC = $("#btnAddCC");
+    $btnAddCC.click(function() {
+        $tableCC.bootstrapTable('insertRow', {
             index: 0,
             row: {
                 chisu: '',
@@ -43,9 +43,9 @@ $(function() {
         });
     });
 
-    let $getTableData = $("#getTableData");
-    $getTableData.click(function() {
-        alert(JSON.stringify($table1.bootstrapTable('getData')));
+    let $getTableDataCC = $("#getTableDataCC");
+    $getTableDataCC.click(function() {
+        alert(JSON.stringify($tableCC.bootstrapTable('getData')));
     });
 
 });

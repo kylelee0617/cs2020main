@@ -1,14 +1,16 @@
 <!-- index.html -->
-<html 
-xmlns:th="http://www.thymeleaf.org"
-layout:decorator="layout/layout"><!-- layout檔案路徑 -->
-  <head>...</head>
-  <body>
-    <div layout:fragment="introSection">
-      <h2>LogIn Success</h2>
-      
-      <br>
-      <label>logIn User : </label><span style="color: blue; font-size:70px;" th:text="${user.useracc}"></span>
-    </div>
-  </body>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/layout">
+<!-- layout檔案路徑 -->
+
+<head>...</head>
+
+<body>
+  <div layout:fragment="introSection">
+    <h2>LogIn Success</h2>
+
+    <br>
+    <label>logIn User : </label><span style="color: blue; font-size:70px;" th:text="${user.useracc}"></span>
+  </div>
+</body>
+
 </html>

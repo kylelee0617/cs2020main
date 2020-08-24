@@ -1,7 +1,7 @@
 function bsTableInit($table, cols) {
     $table.bootstrapTable({
         url: 'data2.json',
-        toolbar: '#toolbar',
+//        toolbar: '.toolbar',
         clickEdit: true,
         showToggle: false,
         pagination: false, //顯示分頁條

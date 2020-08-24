@@ -1,28 +1,39 @@
 #introSection {
-    /* min-height: 857px; */
+  /* min-height: 857px; */
 }
 
 #breadcrumb {
-    margin-top: 50px;
-    z-index: 0;
+  margin-top: 50px;
+  z-index: 0;
 }
 
 fieldset {
-    border: 1px solid blueviolet;
-    border-radius: 15px;
-    min-height: 300px;
+  border: 1px solid blueviolet;
+  border-radius: 15px;
+  min-height: 200px;
 }
 
 fieldset legend {
-    font-weight: bolder;
-    color: blueviolet
+  font-weight: bolder;
+  color: blueviolet;
 }
 
 .formHR1 {
-    border-top: 1px solid burlywood;
-    /* margin-bottom: 5px; */
+  border-top: 1px solid burlywood;
+  /* margin-bottom: 5px; */
 }
 
 .bootstrap-table {
-	height:200px;
+  height:200px;
 }
+
+/*
+#tableArea .dataTables_wrapper {
+  position: relative;
+  clear: both;
+  zoom: 1;
+  overflow-x: auto;
+}
+/* #tableArea table {
+  width: 800px;
+} */
