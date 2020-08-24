@@ -10,6 +10,9 @@ mainTableCols = [{
     field: 'priceName',
     title: '款項名稱'
 }, {
+    field: '',
+    title: '付款方式'
+}, {
     field: 'per',
     title: '百分比'
 }, {
