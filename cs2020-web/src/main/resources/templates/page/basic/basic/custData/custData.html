@@ -1,6 +1,5 @@
 <!-- import layout檔案路徑 -->
-<html xmlns:th="http://www.thymeleaf.org"
-	layout:decorator="layout/layout">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/layout">
 
 <head>
 <script>
@@ -12,100 +11,71 @@
 </head>
 
 <body>
-	<div layout:fragment="introSection">
-		<!-- 客戶資料建檔 -->
-		<div class="row mb-4 pl-2">
-			<div class="col-md-2">
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">工程代號</span>
-					</div>
-					<input type="text" class="form-control"
-						aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-default">
-				</div>
-			</div>
-			<div class="col-md-2 col-sm-3">
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">客戶代號</span>
-					</div>
-					<input type="text" class="form-control"
-						aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-default">
-				</div>
-			</div>
-			<div class="col-2">
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-default">合約號碼</span>
-					</div>
-					<input type="text" class="form-control"
-						aria-label="Sizing example input"
-						aria-describedby="inputGroup-sizing-default">
-				</div>
-			</div>
-			<div class="col-4">
-				<button type="button" class="btn btn-primary">查詢</button>
-				&nbsp;
-				<button type="button" class="btn btn-primary">從合約會審同步</button>
-			</div>
-		</div>
+  <div layout:fragment="introSection">
+  
+    <!-- 客戶資料建檔 -->
+    <div class="row mb-4 pl-2">
+      <div class="col-md-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">工程代號</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-3">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">客戶代號</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">合約號碼</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-primary">查詢</button>
+        &nbsp;
+        <button type="button" class="btn btn-primary">從合約會審同步</button>
+      </div>
+    </div>
 
-		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu active" id="pills-profileCustContent-tab"
-				data-toggle="pill" href="#pills-profileCustContent" role="tab"
-				aria-controls="pills-profileCustContent" aria-selected="true">基本資料</a></li>
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu" id="pills-profileHouseCarContent-tab"
-				data-toggle="pill" href="#pills-profileHouseCarContent" role="tab"
-				aria-controls="pills-profileHouseCarContent" aria-selected="false">房屋、車位</a></li>
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu" id="pills-messagesContent-tab"
-				data-toggle="pill" href="#pills-messagesContent" role="tab"
-				aria-controls="pills-messagesContent" aria-selected="false">特約、備註</a></li>
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu" id="pills-houseCashContent-tab"
-				data-toggle="pill" href="#pills-houseCashContent" role="tab"
-				aria-controls="pills-houseCashContent" aria-selected="false">房屋款</a></li>
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu" id="pills-landCashContent-tab"
-				data-toggle="pill" href="#pills-landCashContent" role="tab"
-				aria-controls="pills-landCashContent" aria-selected="false">土地款</a></li>
-			<li class="nav-item" role="presentation"><a
-				class="nav-link tabMenu" id="pills-carCashContent-tab"
-				data-toggle="pill" href="#pills-carCashContent" role="tab"
-				aria-controls="pills-carCashContent" aria-selected="false">車位款</a></li>
-		</ul>
-		<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane tabContent fade show active"
-				th:include="page/basic/basic/custData/profileCustContent.html :: profileCustContent"
-				id="pills-profileCustContent" role="tabpanel"
-				aria-labelledby="pills-profileCustContent-tab">載入中......0</div>
-			<div class="tab-pane tabContent fade "
-				th:include="page/basic/basic/custData/profileHouseCarContent.html :: profileHouseCarContent"
-				id="pills-profileHouseCarContent" role="tabpanel"
-				aria-labelledby="pills-profileHouseCarContent-tab">載入中......1</div>
-			<div class="tab-pane tabContent fade"
-				th:include="page/basic/basic/custData/messagesContent.html :: messagesContent"
-				id="pills-messagesContent" role="tabpanel"
-				aria-labelledby="pills-messagesContent-tab">載入中......2</div>
-			<div class="tab-pane tabContent fade"
-				th:include="page/basic/basic/custData/houseCashContent.html :: houseCashContent"
-				id="pills-houseCashContent" role="tabpanel"
-				aria-labelledby="pills-houseCashContent-tab">載入中......3</div>
-			<div class="tab-pane tabContent fade"
-				th:include="page/basic/basic/custData/landCashContent.html :: landCashContent"
-				id="pills-landCashContent" role="tabpanel"
-				aria-labelledby="pills-landCashContent-tab">載入中......4</div>
-			<div class="tab-pane tabContent fade"
-				th:include="page/basic/basic/custData/carCashContent.html :: carCashContent"
-				id="pills-carCashContent" role="tabpanel"
-				aria-labelledby="pills-carCashContent-tab">載入中......5</div>
-		</div>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu active" id="pills-profileCustContent-tab" data-toggle="pill" href="#pills-profileCustContent"
+        role="tab" aria-controls="pills-profileCustContent" aria-selected="true">基本資料</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu" id="pills-profileHouseCarContent-tab" data-toggle="pill" href="#pills-profileHouseCarContent"
+        role="tab" aria-controls="pills-profileHouseCarContent" aria-selected="false">房屋、車位</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu" id="pills-messagesContent-tab" data-toggle="pill" href="#pills-messagesContent" role="tab"
+        aria-controls="pills-messagesContent" aria-selected="false">特約、備註</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu" id="pills-houseCashContent-tab" data-toggle="pill" href="#pills-houseCashContent" role="tab"
+        aria-controls="pills-houseCashContent" aria-selected="false">房屋款</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu" id="pills-landCashContent-tab" data-toggle="pill" href="#pills-landCashContent" role="tab"
+        aria-controls="pills-landCashContent" aria-selected="false">土地款</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link tabMenu" id="pills-carCashContent-tab" data-toggle="pill" href="#pills-carCashContent" role="tab"
+        aria-controls="pills-carCashContent" aria-selected="false">車位款</a></li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane tabContent fade show active" th:include="page/basic/basic/custData/profileCustContent.html :: profileCustContent" id="pills-profileCustContent"
+        role="tabpanel" aria-labelledby="pills-profileCustContent-tab">載入中......0</div>
+      <div class="tab-pane tabContent fade " th:include="page/basic/basic/custData/profileHouseCarContent.html :: profileHouseCarContent" id="pills-profileHouseCarContent"
+        role="tabpanel" aria-labelledby="pills-profileHouseCarContent-tab">載入中......1</div>
+      <div class="tab-pane tabContent fade" th:include="page/basic/basic/custData/messagesContent.html :: messagesContent" id="pills-messagesContent" role="tabpanel"
+        aria-labelledby="pills-messagesContent-tab">載入中......2</div>
+      <div class="tab-pane tabContent fade" th:include="page/basic/basic/custData/houseCashContent.html :: houseCashContent" id="pills-houseCashContent" role="tabpanel"
+        aria-labelledby="pills-houseCashContent-tab">載入中......3</div>
+      <div class="tab-pane tabContent fade" th:include="page/basic/basic/custData/landCashContent.html :: landCashContent" id="pills-landCashContent" role="tabpanel"
+        aria-labelledby="pills-landCashContent-tab">載入中......4</div>
+      <div class="tab-pane tabContent fade" th:include="page/basic/basic/custData/carCashContent.html :: carCashContent" id="pills-carCashContent" role="tabpanel"
+        aria-labelledby="pills-carCashContent-tab">載入中......5</div>
+    </div>
 
-	</div>
+  </div>
 </body>
 
 </html>

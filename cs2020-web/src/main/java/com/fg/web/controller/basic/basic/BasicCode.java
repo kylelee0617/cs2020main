@@ -1,4 +1,4 @@
-package com.fg.web.controller.pay.get;
+package com.fg.web.controller.basic.basic;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,15 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fg.web.controller.BaseController;
 
 @Controller
-@RequestMapping("/pay/get")
-public class getMoney extends BaseController {
+@RequestMapping("/basic/basic")
+public class BasicCode extends BaseController {
 
-	@RequestMapping("/getMoney")
+	@RequestMapping("/basicCode")
 	public String custData(Model model) {
-		
-		//此功能擬整合至基本資料
-		
-		return "page/pay/get/getMoney/getMoney";
+		return "page/basic/basic/basicCode/basicCode";
 	}
 	
 }

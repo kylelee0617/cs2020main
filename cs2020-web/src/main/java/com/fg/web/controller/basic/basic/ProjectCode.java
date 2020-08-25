@@ -8,16 +8,11 @@ import com.fg.web.controller.BaseController;
 
 @Controller
 @RequestMapping("/basic/basic")
-public class Basic extends BaseController {
+public class ProjectCode extends BaseController {
 
-	@RequestMapping("/custData")
+	@RequestMapping("/projectCode")
 	public String custData(Model model) {
-		return "page/basic/basic/custData/custData";
-	}
-	
-	@RequestMapping("/test")
-	public String test(Model model) {
-		return "page/test";
+		return "page/basic/basic/projectCode/projectCode";
 	}
 	
 }

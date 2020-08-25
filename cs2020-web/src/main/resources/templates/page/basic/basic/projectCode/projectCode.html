@@ -1,0 +1,45 @@
+<!-- import layout檔案路徑 -->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/layout">
+
+<head>
+<script>
+	$(function() {
+		funcName = "projectCode";
+		updBread(funcName);
+	})
+</script>
+</head>
+
+<body>
+  <div layout:fragment="introSection">
+    
+    <!-- 工程資料建立 -->
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation"><a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+        aria-controls="pills-profileCustContent" aria-selected="true">基本資料</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link " id="pills-bank-tab" data-toggle="pill" href="#pills-bank" role="tab"
+        aria-controls="pills-bank" aria-selected="false">指定銀行</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link " id="pills-houseCash-tab" data-toggle="pill" href="#pills-houseCash" role="tab"
+        aria-controls="pills-houseCash" aria-selected="false">房屋款</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link " id="pills-landCash-tab" data-toggle="pill" href="#pills-landCash" role="tab"
+        aria-controls="pills-landCash" aria-selected="false">土地款</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link " id="pills-carCash-tab" data-toggle="pill" href="#pills-carCash" role="tab"
+        aria-controls="pills-carCash" aria-selected="false">車位款</a></li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" th:include="page/basic/basic/projectCode/pjCode_profile.html :: pjCode_profile" id="pills-profile" role="tabpanel" 
+        aria-labelledby="pills-profile-tab">基本資料</div>
+      <div class="tab-pane fade " th:include="page/basic/basic/projectCode/pjCode_bank.html :: pjCode_bank" id="pills-bank" role="tabpanel" 
+        aria-labelledby="pills-bank-tab">指定銀行</div>
+      <div class="tab-pane fade" th:include="page/basic/basic/projectCode/pjCode_houseCash.html :: pjCode_houseCash" id="pills-houseCash" role="tabpanel"
+        aria-labelledby="pills-houseCash-tab">房屋款</div>
+      <div class="tab-pane fade" th:include="page/basic/basic/projectCode/pjCode_landCash.html :: pjCode_landCash" id="pills-landCash" role="tabpanel"
+        aria-labelledby="pills-landCash-tab">土地款</div>
+      <div class="tab-pane fade" th:include="page/basic/basic/projectCode/pjCode_carCash.html :: pjCode_carCash" id="pills-carCash" role="tabpanel" 
+        aria-labelledby="pills-carCash-tab">車位款</div>
+    </div>
+
+  </div>
+</body>
+
+</html>

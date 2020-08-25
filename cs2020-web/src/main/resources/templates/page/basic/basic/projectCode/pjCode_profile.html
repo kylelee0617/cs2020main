@@ -1,0 +1,75 @@
+<div th:fragment="pjCode_profile">
+
+  <script th:src="@{/js/custData/pjCode_profile.js}"></script>
+  <fieldset class="px-3 pb-3">
+    <legend style="width: 100px;">基本資料</legend>
+
+    <div class="row mb-3">
+      <div class="col-md-2 justify-content-md-start">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 
+          <label class="form-check-label" for="inlineRadio1">廠辦</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 
+          <label class="form-check-label" for="inlineRadio2">住宅</label>
+        </div>
+      </div>
+      <div class="col-md-3 justify-content-md-start">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1"> 
+          <label class="form-check-label" for="inlineRadio1">結案</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2"> 
+          <label class="form-check-label" for="inlineRadio2">未結案</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 form-inline mb-4">
+        <div class="form-group mx-sm-2 mb-2">
+          <label for="code1" class="mr-1">工程代號 : </label> 
+          <input type="text" class="form-control form-control-sm width100" value="">
+        </div>
+        <div class="form-group mx-sm-2 mb-2">
+          <label for="name1" class="mr-1">照別 : </label> 
+          <input type="password" class="form-control form-control-sm width25"  placeholder="">
+        </div>
+        <div class="form-group mx-sm-2 mb-2">
+          <label for="name1" class="mr-1">工程名稱 : </label> 
+          <input type="password" class="form-control form-control-sm" placeholder="">
+        </div>
+        <div class="form-group mx-sm-2 mb-2">
+          <label for="name1" class="mr-1">會計入帳代號 : </label> 
+          <input type="password" class="form-control form-control-sm" placeholder="">
+        </div>
+      </div>
+    </div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+
+    <div class="row"></div>
+  </fieldset>
+
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-md-2">
+      <button id="getTableDataCC" class="btn btn-primary btn-md btn-block">儲存</button>
+    </div>
+  </div>
+  <br>
+
+</div>
