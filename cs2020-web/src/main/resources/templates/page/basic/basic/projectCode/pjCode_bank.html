@@ -1,10 +1,221 @@
 <div th:fragment="pjCode_bank">
 
   <script th:src="@{/js/custData/pjCode_bank.js}"></script>
-  <fieldset class="px-3 pb-3">
-    <legend style="width: 100px;">指定銀行</legend>
+  <div class="row mb-3">
+    <div class="col-md-2 mb-2 justify-content-md-center align-self-center">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 
+        <label class="form-check-label" for="inlineRadio1">一般帳號</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 
+        <label class="form-check-label" for="inlineRadio2">虛擬帳號</label>
+      </div>
+    </div>
+    <div class="col-md-7 form-inline mb-2 ml-n3">
+      <div class="form-group mx-sm-2">
+        <label for="code1" class="mr-1">虛擬帳號前幾碼 : </label> 
+        <input type="text" class="form-control form-control-sm" value="">
+      </div>
+      <div class="form-group mx-sm-2">
+        <label for="name1" class="mr-1">信託虛擬帳號前幾碼 : </label> 
+        <input type="text" class="form-control form-control-sm"  placeholder="">
+      </div>
+    </div>
+    <div class="col-md-12 mb-5">
+      <fieldset>
+        <legend style="width: 200px;">指定銀行一 - 一般</legend>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group ">
+            <label for="code1" class="mr-1">銀行代號 : </label>
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">分行代號 : </label> 
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">分行帳號 + 支號 : </label> 
+            <input type="text" class="form-control form-control-sm width100" value=""  placeholder="">
+          </div>
+        </div>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group mr-2">
+            <label for="code1" class="mr-1">分行名稱 : </label>
+            <input type="text" class="form-control form-control-sm width200"  placeholder="">
+          </div>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio1" value="option1"> 
+              <label class="form-check-label" for="inlineRadio1">土房共用</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">房屋</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">土地</label>
+            </div>
+          </div>
+          <div class="form-group mx-sm-2 ">
+            <label for="name1" class="mr-1">起造公司 : </label> 
+            <input type="text" class="form-control form-control-sm width100" value=""  placeholder="下拉選單">
+          </div>
+        </div>
+        <div class="col-md-12 mb-2">
+          <fieldset style="height:auto;">
+            <legend style="width: 50px;">信託</legend>
+            <div class="col-md-12 form-inline mb-2">
+              <div class="form-group ">
+                <label for="code1" class="mr-1">銀行代號 : </label>
+                <input type="text" class="form-control form-control-sm width100"  placeholder="">
+              </div>
+              <div class="form-group mx-sm-2 mb-2">
+                <label for="name1" class="mr-1">分行代號 : </label> 
+                <input type="text" class="form-control form-control-sm width100"  placeholder="">
+              </div>
+              <div class="form-group mx-sm-2 mb-2">
+                <label for="name1" class="mr-1">分行帳號 + 支號 : </label> 
+                <input type="text" class="form-control form-control-sm width100" value=""  placeholder="">
+              </div>
+          </div>
+          <div class="col-md-12 form-inline mb-2">
+            <div class="form-group mr-2">
+              <label for="code1" class="mr-1">分行名稱 : </label>
+              <input type="text" class="form-control form-control-sm width200"  placeholder="">
+            </div>
+            <div class="form-group mx-sm-2 ">
+              <label for="name1" class="mr-1">起造公司 : </label> 
+              <input type="text" class="form-control form-control-sm width100" value=""  placeholder="下拉選單">
+            </div>
+          </div>
+          </fieldset>
+        </div>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group mb-2">
+            <label for="code1" class="mr-1">發票公司別一 >> </label>
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="inlineRadio1" value="option1"> 
+              <label class="form-check-label" for="inlineRadio1">土房共用</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">房屋</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">土地</label>
+            </div>
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">發票公司 : </label> 
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+        </div>
+      </fieldset>
+    </div>
     
-  </fieldset>
+    <div class="col-md-12 mb-2">
+      <fieldset>
+        <legend style="width: 200px;">指定銀行二 - 一般</legend>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group ">
+            <label for="code1" class="mr-1">銀行代號 : </label>
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">分行代號 : </label> 
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">分行帳號 + 支號 : </label> 
+            <input type="text" class="form-control form-control-sm width100" value=""  placeholder="">
+          </div>
+        </div>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group mr-2">
+            <label for="code1" class="mr-1">分行名稱 : </label>
+            <input type="text" class="form-control form-control-sm width200"  placeholder="">
+          </div>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio1" value="option1"> 
+              <label class="form-check-label" for="inlineRadio1">土房共用</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">房屋</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra5" id="inlineRadio2" value="option2"> 
+              <label class="form-check-label" for="inlineRadio2">土地</label>
+            </div>
+          </div>
+          <div class="form-group mx-sm-2 ">
+            <label for="name1" class="mr-1">起造公司 : </label> 
+            <input type="text" class="form-control form-control-sm width100" value=""  placeholder="下拉選單">
+          </div>
+        </div>
+        <div class="col-md-12 mb-2">
+          <fieldset>
+            <legend style="width: 200px;">指定銀行二 - 信託</legend>
+            <div class="col-md-12 form-inline mb-2">
+              <div class="form-group ">
+                <label for="code1" class="mr-1">銀行代號 : </label>
+                <input type="text" class="form-control form-control-sm width100"  placeholder="">
+              </div>
+              <div class="form-group mx-sm-2 mb-2">
+                <label for="name1" class="mr-1">分行代號 : </label> 
+                <input type="text" class="form-control form-control-sm width100"  placeholder="">
+              </div>
+              <div class="form-group mx-sm-2 mb-2">
+                <label for="name1" class="mr-1">分行帳號 + 支號 : </label> 
+                <input type="text" class="form-control form-control-sm width100" value=""  placeholder="">
+              </div>
+          </div>
+          <div class="col-md-12 form-inline mb-2">
+            <div class="form-group mr-2">
+              <label for="code1" class="mr-1">分行名稱 : </label>
+              <input type="text" class="form-control form-control-sm width200"  placeholder="">
+            </div>
+            <div class="form-group mx-sm-2 ">
+              <label for="name1" class="mr-1">起造公司 : </label> 
+              <input type="text" class="form-control form-control-sm width100" value=""  placeholder="下拉選單">
+            </div>
+          </div>
+          </fieldset>
+        </div>
+        <div class="col-md-12 form-inline mb-2">
+          <div class="form-group mb-2">
+            <label for="code1" class="mr-1">發票公司別二 >> </label>
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="ra61" value="option1"> 
+              <label class="form-check-label" for="ra61">土房共用</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="ra62" value="option2"> 
+              <label class="form-check-label" for="ra62">房屋</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="ra6" id="ra63" value="option2"> 
+              <label class="form-check-label" for="ra63">土地</label>
+            </div>
+          </div>
+          <div class="form-group mx-sm-2 mb-2">
+            <label for="name1" class="mr-1">發票公司 : </label> 
+            <input type="text" class="form-control form-control-sm width100"  placeholder="">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    
+  </div>
+  
 
   <div class="row justify-content-md-center mt-5">
     <div class="col-md-2">

@@ -1,0 +1,38 @@
+<!-- import layout檔案路徑 -->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/layout">
+
+<head>
+
+<script>
+	$(function() {
+		funcName = "opNotice";
+		updBread(funcName);
+	});
+</script>
+</head>
+
+<body>
+  <div layout:fragment="introSection">
+    <!-- 委外繳款通知單轉檔 -->
+    <div class="row">
+      <div class="col-md-12 form-inline mb-2">
+        <div class="form-group mx-sm-2 mb-2">
+          <label for="code1" class="mr-1">工程代號 : </label>
+          <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+            <option>H101A</option>
+            <option>H101T</option>
+            <option>H102A</option>
+            <option>H93A</option>
+            <option>H95T</option>
+          </select>
+        </div>
+        <div class="form-group mx-sm-2 mb-2">
+          <input type="text" class="form-control form-control-sm width300"  placeholder="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
